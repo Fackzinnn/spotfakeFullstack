@@ -18,7 +18,7 @@ function RegistrationForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form Data:', formData);
-    // Aqui você pode adicionar a lógica de registro
+   
   };
 
   return (
