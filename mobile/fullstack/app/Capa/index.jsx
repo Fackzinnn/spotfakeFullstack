@@ -1,17 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 function Capa() {
   const navigate = useNavigate();
 
-  const goToRegister = () => {
-    navigate('/login'); // Navega diretamente para a tela de login ao clicar no botão
+  const goToLogin = () => {
+    navigate('/login'); // Navega para a tela de login
   };
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>Vem na Onda</h1>
-      <button onClick={goToRegister} style={styles.button}>Começar</button>
+      <h1 onClick={goToLogin} style={styles.heading}>Vem na Onda</h1>
     </div>
   );
 }
@@ -26,21 +28,28 @@ const styles = {
     height: '100vh',
     background: 'linear-gradient(to bottom, #00bcd4, #000)', // Degradê ciano para preto
     color: '#fff',
+    cursor: 'pointer',
+  },
+  image: {
+    width: '150px', // Ajuste o tamanho conforme necessário
+    height: 'auto',
+    marginBottom: '20px',
   },
   heading: {
     fontSize: '3rem',
     fontWeight: 'bold',
-    marginBottom: '20px',
-  },
-  button: {
+    marginTop: '20px',
     padding: '15px 30px',
-    fontSize: '1rem',
+    backgroundColor: '#00bcd4', // Cor do botão
     color: '#fff',
-    backgroundColor: '#007BFF',
-    border: 'none',
-    borderRadius: '5px',
+    borderRadius: '30px',
+    boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', // Sombra do botão
+    transition: 'all 0.3s ease',
     cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
+  },
+  headingHover: {
+    backgroundColor: '#0097a7', // Cor de hover mais escura
+    transform: 'scale(1.05)', // Leve aumento ao passar o mouse
   },
 };
 

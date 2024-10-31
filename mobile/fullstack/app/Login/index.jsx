@@ -1,109 +1,87 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Hook para navegação
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function LoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Inicializa a navegação
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Usuário:', username, 'Senha:', password);
-    // Aqui você pode adicionar a lógica de autenticação
-  };
+function Login() {
+  const navigate = useNavigate();
 
   const goToRegister = () => {
-    navigate('/registro'); // Navega para a página de registro
+    navigate('/registro'); // Navega para a tela de registro
+  };
+
+  const goBack = () => {
+    navigate('/'); // Navega para a página de capa
   };
 
   return (
-    <div style={styles.loginContainer}>
-      <form onSubmit={handleSubmit} style={styles.loginForm}>
-        <h2 style={styles.heading}>Login</h2>
-        <div style={styles.formGroup}>
-          <label htmlFor="username" style={styles.label}>Usuário:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label htmlFor="password" style={styles.label}>Senha:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            style={styles.input}
-          />
-        </div>
-        <button type="submit" style={styles.button}>Entrar</button>
-        <button type="button" onClick={goToRegister} style={styles.registerButton}>
-          Criar Conta
-        </button>
-      </form>
+    <div style={styles.container}>
+      <button onClick={goBack} style={styles.backButton}>Voltar</button>
+      <h2 style={styles.title}>Login</h2>
+      <input type="text" placeholder="Email" style={styles.input} />
+      <input type="password" placeholder="Senha" style={styles.input} />
+      <button style={styles.button}>Entrar</button>
+      <p style={styles.registerLink} onClick={goToRegister}>Criar uma conta</p>
     </div>
   );
 }
 
 const styles = {
-  loginContainer: {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    width: '300px',
-    margin: '0 auto',
-    marginTop: '100px',
-  },
-  loginForm: {
+  container: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+    background: 'linear-gradient(to bottom, #0d1b2a, #000)', // Azul escuro para preto
+    color: '#fff',
   },
-  heading: {
-    textAlign: 'center',
+  backButton: {
+    position: 'absolute',
+    top: '20px',
+    left: '20px',
+    padding: '10px 20px',
+    borderRadius: '20px',
+    backgroundColor: '#1e3a56',
+    color: '#fff',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '1rem',
+    transition: 'background-color 0.3s ease',
+  },
+  title: {
+    fontSize: '2.5rem',
     marginBottom: '20px',
   },
-  formGroup: {
-    marginBottom: '15px',
-  },
-  label: {
-    display: 'block',
-    marginBottom: '5px',
-  },
   input: {
-    width: '100%',
-    padding: '8px',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
+    width: '80%',
+    padding: '15px',
+    margin: '10px 0',
+    borderRadius: '30px',
+    border: 'none',
+    outline: 'none',
+    fontSize: '1rem',
+    backgroundColor: '#1e3a56',
+    color: '#fff',
+    transition: 'background-color 0.3s ease',
   },
   button: {
-    width: '100%',
-    padding: '10px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
+    width: '80%',
+    padding: '15px',
+    margin: '20px 0',
+    borderRadius: '30px',
     border: 'none',
-    borderRadius: '4px',
+    backgroundColor: '#1d3557',
+    color: '#fff',
+    fontSize: '1.2rem',
     cursor: 'pointer',
-    fontSize: '16px',
-    marginTop: '10px',
+    transition: 'background-color 0.3s ease',
+    boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
   },
-  registerButton: {
-    width: '100%',
-    padding: '10px',
-    backgroundColor: '#007BFF',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
+  registerLink: {
+    fontSize: '1rem',
+    color: '#a8dadc',
+    textDecoration: 'underline',
     cursor: 'pointer',
-    fontSize: '16px',
-    marginTop: '10px',
   },
 };
 
-export default LoginForm;
+export default Login;

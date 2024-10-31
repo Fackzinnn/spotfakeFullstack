@@ -1,144 +1,80 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    cpf: '',
-  });
+function Registro() {
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form Data:', formData);
-   
+  const goBack = () => {
+    navigate('/login'); // Navega para a tela de login
   };
 
   return (
     <div style={styles.container}>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <h2 style={styles.heading}>Registro</h2>
-        <div style={styles.formGroup}>
-          <label htmlFor="firstName" style={styles.label}>Nome:</label>
-          <input
-            type="text"
-            id="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label htmlFor="lastName" style={styles.label}>Sobrenome:</label>
-          <input
-            type="text"
-            id="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label htmlFor="phoneNumber" style={styles.label}>Número de Telefone:</label>
-          <input
-            type="tel"
-            id="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label htmlFor="email" style={styles.label}>Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label htmlFor="password" style={styles.label}>Senha:</label>
-          <input
-            type="password"
-            id="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label htmlFor="cpf" style={styles.label}>CPF:</label>
-          <input
-            type="text"
-            id="cpf"
-            value={formData.cpf}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
-        </div>
-        <button type="submit" style={styles.button}>Registrar</button>
-      </form>
+      <button onClick={goBack} style={styles.backButton}>Voltar</button>
+      <h2 style={styles.title}>Criar Conta</h2>
+      <input type="text" placeholder="Nome" style={styles.input} />
+      <input type="text" placeholder="Sobrenome" style={styles.input} />
+      <input type="text" placeholder="CPF" style={styles.input} />
+      <input type="email" placeholder="Email" style={styles.input} />
+      <input type="tel" placeholder="Número de Telefone" style={styles.input} />
+      <input type="password" placeholder="Senha" style={styles.input} />
+      <button style={styles.button}>Registrar</button>
     </div>
   );
 }
 
 const styles = {
   container: {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    width: '400px',
-    margin: '0 auto',
-    marginTop: '50px',
-  },
-  form: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+    background: 'linear-gradient(to bottom, #0d1b2a, #000)', // Azul escuro para preto
+    color: '#fff',
   },
-  heading: {
-    textAlign: 'center',
+  backButton: {
+    position: 'absolute',
+    top: '20px',
+    left: '20px',
+    padding: '10px 20px',
+    borderRadius: '20px',
+    backgroundColor: '#1e3a56',
+    color: '#fff',
+    border: 'none',
+    cursor: 'pointer',
+    fontSize: '1rem',
+    transition: 'background-color 0.3s ease',
+  },
+  title: {
+    fontSize: '2.5rem',
     marginBottom: '20px',
   },
-  formGroup: {
-    marginBottom: '15px',
-  },
-  label: {
-    display: 'block',
-    marginBottom: '5px',
-  },
   input: {
-    width: '100%',
-    padding: '8px',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
+    width: '80%',
+    padding: '15px',
+    margin: '10px 0',
+    borderRadius: '30px',
+    border: 'none',
+    outline: 'none',
+    fontSize: '1rem',
+    backgroundColor: '#1e3a56',
+    color: '#fff',
+    transition: 'background-color 0.3s ease',
   },
   button: {
-    width: '100%',
-    padding: '10px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
+    width: '80%',
+    padding: '15px',
+    margin: '20px 0',
+    borderRadius: '30px',
     border: 'none',
-    borderRadius: '4px',
+    backgroundColor: '#1d3557',
+    color: '#fff',
+    fontSize: '1.2rem',
     cursor: 'pointer',
-    fontSize: '16px',
-    marginTop: '10px',
+    transition: 'background-color 0.3s ease',
+    boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
   },
 };
 
-export default RegistrationForm;
+export default Registro;
