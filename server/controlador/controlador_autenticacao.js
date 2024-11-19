@@ -59,4 +59,5 @@ console.log(token)
     })
 }
 
+
 export { registro, login }
